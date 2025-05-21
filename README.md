@@ -1,83 +1,81 @@
 # HOI4 Mod Utilities
 
-This extension add tools for Heart of Iron IV modding. Some of the tools may work on other Paradox games.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![VSCode Marketplace](https://img.shields.io/vscode-marketplace/v/TheCascadian.hoi4modutilities?label=VSCode%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=TheCascadian.hoi4modutilities)
 
-> I'm disappointed by Paradox because of the Silk Road thing. I'll pause this project until they fix it.
+A modernized VSCode extension providing utilities for Hearts of Iron IV mod developers.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Extension Settings](#extension-settings)
+- [Known Issues](#known-issues)
+- [Release Notes](#release-notes)
+- [Contributing](#contributing)
+- [License](#license)
+- [Original README (paraphrased)](#original-readme-paraphrased)
 
 ## Features
 
-* World map preview
-* Focus tree preview
-* Event tree preview
-* Technology tree preview
-* Military industrial organization (MIO) preview.
-* GUI preview
-* `.gfx` file preview (sprites used by HOI4 are defined here)
-* `.dds`, `.tga` file preview (images files used by HOI4)
+- World map preview  
+- National focus & technology tree visualization  
+- Event tree hierarchy display  
+- Military-industrial organization (MIO) overview  
+- GUI component preview  
+- `.gfx` sprite definitions  
+- `.dds` & `.tga` image previews  
 
-For feature details and user manual, please refer to [HOI4 Mod Utilities Wiki](https://github.com/herbix/hoi4modutilities/wiki).
+## Installation
 
-## Steps to start
+1. Install the extension from the VSCode Marketplace.  
+2. Configure the HOI4 install directory:  
+   - Use **Select HOI4 Install Path** in the command palette (`Ctrl+Shift+P`), or  
+   - Set `hoi4ModUtilities.installPath` in your settings.  
+3. Open your mod development folder.  
+4. *(Optional)* Select a `.mod` file via **Select Mod File** in the command palette.  
 
-1. Install and enable this extension in VSCode.
-2. Set Heart of Iron IV install path. You can:
-    * (Since v0.7.0, or on [vscode web](https://vscode.dev)) Open command palette using `Ctrl+Shift+P`. Use command `Select HOI4 install path` to browse the folder that installed Heart of Iron IV.
-    * Update setting `hoi4ModUtilities.installPath` (you can open settings page of VSCode using `Ctrl+,`) to the folder that installed Heart of Iron IV.
-3. Open your mod develop folder.
-4. (*Optional*) Open command palette using `Ctrl+Shift+P`. Use command `Select mod file` to set working mod descriptor (the `.mod` file).
-5. Use these entries:
-    * Command palette (`Ctrl+Shift+P`) commands: `Preview World Map` and `Preview HOI4 file`*.
-    * `Preview HOI4 file` (![Preview HOI4 file button](demo/preview-icon.png))* button on right-top tool bar of text editor.
-    * Open a `.dds` or `.tga` file.
+## Usage
 
-\* *`Preview HOI4 file` (![Preview HOI4 file button](demo/preview-icon.png)) button/command is invisible, except on `.gfx`, `map/default.map`, technology tree or national focus tree files.*
-
-## Demos
-
-### World map preview
-
-![World map preview demo](demo/5.gif)
-
-### Focus tree preview
-
-![Focus tree preview demo](demo/1.gif)
-
-### Event tree preview
-
-![Event tree preview demo](demo/6.gif)
-
-### Technology tree preview
-
-![Technology tree preview demo](demo/4.gif)
-
-### GUI Preview
-
-![GUI preview demo](demo/7.gif)
+- **Command Palette** (`Ctrl+Shift+P`):  
+  - **Preview World Map**  
+  - **Preview HOI4 File**  
+- **Editor Toolbar Button** (visible on `.gfx`, `map/default.map`, focus/tech tree files): launches **Preview HOI4 File**.
 
 ## Extension Settings
 
-|Setting|Type|Description|
-|-------|----------|--------|
-|`hoi4ModUtilities.installPath`|`string`|Hearts of Iron IV install path. Without this, most features are broken.|
-|`hoi4ModUtilities.loadDlcContents`|`boolean`|Whether to load DLC images when previewing files. Enabling this will use more memory (All DLCs are around 600MB).|
-|`hoi4ModUtilities.modFile`|`string`|Path to the working `.mod` file. This file is used to read replace_path. If not specified, will use first `.mod` file in first folder of the workspace.|
-|`hoi4ModUtilities.enableSupplyArea`|`boolean`|If you are developing mod for HOI4(version<=1.10). Use this to check enable supply area.|
-|`hoi4ModUtilities.previewLocalisation`|`enum`|Language of content in event tree preview.|
-|`hoi4ModUtilities.featureFlags`|`array` of `string`|Feature flags are used to disable or enable features. Reloading is required after changing this. Please refer to [Wiki](https://github.com/herbix/hoi4modutilities/wiki/Feature-flags) on Github for details.|
+| Setting                                | Type       | Description                                                                                    |
+|----------------------------------------|------------|------------------------------------------------------------------------------------------------|
+| `hoi4ModUtilities.installPath`         | `string`   | Path to your Hearts of Iron IV installation (required).                                       |
+| `hoi4ModUtilities.loadDlcContents`     | `boolean`  | Include DLC assets in previews (increases memory usage).                                      |
+| `hoi4ModUtilities.modFile`             | `string`   | Path to the active `.mod` descriptor (defaults to first found).                                |
+| `hoi4ModUtilities.enableSupplyArea`    | `boolean`  | Enable supply area rendering for HOI4 ≤ v1.10.                                                  |
+| `hoi4ModUtilities.previewLocalisation` | `enum`     | Language for event tree content.                                                              |
+| `hoi4ModUtilities.featureFlags`        | `string[]` | Feature flags to toggle capabilities (reload required).                                        |
 
 ## Known Issues
 
-* GUI of focus tree can't be configured like technology tree.
-* Edge lines on world map not alway fit edge of colors.
-* Event tree preview will duplicate events even they are same event if they are from different option.
+- Focus tree GUI lacks configuration options available to the tech tree.  
+- World map border lines may misalign with color regions.  
+- Event tree may show duplicate entries when events appear in multiple options.  
 
-## Release Notes - [0.12.2]
+## Release Notes
 
-### Fixed
-* Allow `|` in symbol type (to support the case `localization_key = building_state_modifier|dam`) (#105) (Contributor: [IShiraiKurokoI(Shirai_Kuroko)](https://github.com/IShiraiKurokoI)).
+<a name="0.12.2"></a>
+### [0.12.2] – 2025-05-XX
+- **Fixed**: Support for `|` in symbol types (e.g., `building_state_modifier|dam`) (#105).
 
-## Contribute
-* If you have any suggestion, feel free to create issue on this [Github repo](https://github.com/herbix/hoi4modutilities).
-* If you want to contribute translation, feel free to create pull request to this [Github repo](https://github.com/herbix/hoi4modutilities). All localization related files are under `i18n` folder.
+## Contributing
 
-* Thanks to all contributors listed [here](https://github.com/herbix/hoi4modutilities/graphs/contributors).
+- Report issues or request features via [GitHub Issues](https://github.com/TheCascadian/hoi4modutilities/issues).  
+- Submit localization updates by pull request to the `i18n` folder.  
+- Acknowledgments available in the [CONTRIBUTORS.md](CONTRIBUTORS.md).
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Original README (paraphrased)
+
+```text
+HOI4 Mod Utilities: VSCode tools for Hearts of Iron IV modders. Includes map, focus tree, event tree, tech tree, MIO, GUI, `.gfx` & image previews. To start: install extension, set install path (via command or setting), open mod folder, optionally select `.mod`, then use preview commands or toolbar. Settings cover installPath, load DLC, modFile, supply area, localization, feature flags. Known issues: focus GUI config, map edge alignment, duplicate event entries. Release 0.12.2 adds support for `|` in symbol types. Contribute via issues/PRs. Licensed under MIT.
